@@ -5913,7 +5913,7 @@
         {
             "actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D2632582555372294245",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D10088851542470270575",
                     "name": "Inspect in Game..."
                 }
             ],
@@ -5951,7 +5951,7 @@
             "instanceid": "188530139",
             "market_actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D2632582555372294245",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D10088851542470270575",
                     "name": "Inspect in Game..."
                 }
             ],
@@ -6012,7 +6012,7 @@
         {
             "actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D2948382119492538607",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D14467364542788360261",
                     "name": "Inspect in Game..."
                 }
             ],
@@ -6050,7 +6050,7 @@
             "instanceid": "188530139",
             "market_actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D2948382119492538607",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D14467364542788360261",
                     "name": "Inspect in Game..."
                 }
             ],
@@ -7247,7 +7247,7 @@
         {
             "actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D14739875864866058305",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S%owner_steamid%A%assetid%D921550912482260163",
                     "name": "Inspect in Game..."
                 }
             ],
@@ -7285,7 +7285,7 @@
             "instanceid": "188530139",
             "market_actions": [
                 {
-                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D14739875864866058305",
+                    "link": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M%listingid%A%assetid%D921550912482260163",
                     "name": "Inspect in Game..."
                 }
             ],
