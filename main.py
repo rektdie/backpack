@@ -28,6 +28,5 @@ for proxy in proxies:
     if response.status_code == 200:
         print(response.status_code)
 
-
-with open("data.txt", "w") as f:
-    f.write(jprint(response.json()))
+    with open("data.txt", "w") as f:
+        f.write(jprint(response.json()))
