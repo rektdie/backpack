@@ -1,34 +1,47 @@
 import requests
 import json
+from steamid_converter import Converter
+import re
 
 API_KEY = "953d9838-b77a-4823-a99c-44e9de511138"
 STEAM_KEY = "1BE7CD78BC0E81FB9FF4B35A5D070429"
 
+my_steam_id = "76561198323251063"
+
+with open('results.txt', 'w'):
+    pass
+
 gameID = 730
 
-def jprint(obj):
-    text = json.dumps(obj, sort_keys=True, indent=4)
-    return text
-
+steam3IDs = []
 steamIDs = []
 
-response = requests.get(f"https://api.steampowered.com/ISteamApps/GetServerPlayers/v1/?key={STEAM_KEY}&format=json&filter=ip:169.254.162.5:4984")
-print(response.content)
-"""
-try:
-    players = response.json()["response"]["players"]
-    for player in players:
-        steamIDs.append(player["steamid"])
-except json.decoder.JSONDecodeError:
-    print("Error: Response was not valid JSON.")
-    print("Response status code:", response.status_code)
-    print("Response content:", response.content)
+with open('input.txt', 'r', encoding="utf8") as f:
+    content = f.read()
+
+    steamids = re.findall(r'\[U:1:\d+\]', content)
+
+    for steamid in steamids:
+        steam3IDs.append(steamid)
+
+for id in steam3IDs:
+    steamIDs.append(Converter.to_steamID64(id, as_int=False))
 
 session = requests.Session()
 
-# Get inventory for each player
 for steamID in steamIDs:
-    response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID}/2", headers={"X-API-Key": API_KEY})
-    with open("data.txt", "a") as f:
-        f.write(jprint(response.json()) + "\n")
-"""
+    if steamID != my_steam_id:
+        response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID}/2", headers={"X-API-Key": API_KEY})
+        data = json.loads(response.text)
+
+        num_cases = 0
+        try:
+            for item in data['result']['inventory'].values():
+                if 'CSGO_Type_WeaponCase' in [tag['internal_name'] for tag in item['tags']]:
+                    num_cases += item['amount']
+        except:
+            continue
+
+        with open("results.txt", "a") as f:
+            if num_cases > 0:
+                f.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n")
