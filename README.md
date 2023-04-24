@@ -1,1 +1,1 @@
-https://img.shields.io/github/followers/rektdie
+<img src="https://img.shields.io/github/followers/rektdie"> 
