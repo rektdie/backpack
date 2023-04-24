@@ -4,7 +4,6 @@ from steamid_converter import Converter
 import re
 
 API_KEY = "953d9838-b77a-4823-a99c-44e9de511138"
-STEAM_KEY = "1BE7CD78BC0E81FB9FF4B35A5D070429"
 
 my_steam_id = "76561198323251063"
 
