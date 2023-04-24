@@ -41,6 +41,6 @@ for steamID in steamIDs:
         except:
             continue
 
-        with open("results.txt", "a") as f:
-            if num_cases > 0:
-                f.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n")
+        if num_cases > 0:
+            with open("results.txt", "a") as f:
+                    f.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n")
