@@ -30,17 +30,22 @@ session = requests.Session()
 
 for steamID in steamIDs:
     if steamID != my_steam_id:
-        response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID}/2", headers={"X-API-Key": API_KEY})
-        data = json.loads(response.text)
-
-        num_cases = 0
         try:
-            for item in data['result']['inventory'].values():
-                if 'CSGO_Type_WeaponCase' in [tag['internal_name'] for tag in item['tags']]:
-                    num_cases += item['amount']
-        except:
-            continue
+            response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID}/2", headers={"X-API-Key": API_KEY}, timeout=10)
+            data = json.loads(response.text)
+            print(response.elapsed.total_seconds())
 
-        if num_cases > 0:
-            with open("results.txt", "a") as f:
-                    f.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n")
+            num_cases = 0
+            try:
+                for item in data['result']['inventory'].values():
+                    if 'CSGO_Type_WeaponCase' in [tag['internal_name'] for tag in item['tags']]:
+                        num_cases += item['amount']
+            except:
+                continue
+
+            if num_cases > 0:
+                with open("results.txt", "a") as f:
+                        f.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n")
+        except requests.exceptions.Timeout:
+            print("Timed out")
+            continue
