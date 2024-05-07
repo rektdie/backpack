@@ -96,61 +96,66 @@ for id in steam3IDs:
 
 session = requests.Session()
 
+databaseContent = []
+
+with open("database.txt", "r") as f:
+    databaseContent = f.read().splitlines()
+
 for steamID in steamIDs:
     if steamID != my_steam_id:
-        with open("database.txt", "a+") as f:
-            if (steamID not in f):
+        if (steamID not in databaseContent):
+            try:
+                response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID1}/2", headers={"X-API-Key": API_KEY}, timeout=10)
+                data = json.loads(response.text)
+                print(response.elapsed.total_seconds())
+
+                num_cases = 0
+
+                foundCases = []
+
+                for item in data['result']['inventory'].values():
+                    if item['market_name'] in caseNames:
+                        num_cases += item['amount']
+                        if item['market_name'] not in foundCases:
+                            foundCases.append(item['market_name'])
+
+                if num_cases > 0:
+                    with open("results.txt", "a") as e:
+                        e.write("Tf2 items\n")
+                        for case in foundCases:
+                            e.write(f"{case}, ")
+                        e.write('\n')
+                        e.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}/inventory\n\n")
+            except TimeoutError:
+                print("Timed out")
+            except:
+                print("Private inventory")
+
+            try:
+                response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID2}/2", headers={"X-API-Key": API_KEY}, timeout=10)
+                data = json.loads(response.text)
+                print(response.elapsed.total_seconds())
+
+                num_cases = 0
                 try:
-                    response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID1}/2", headers={"X-API-Key": API_KEY}, timeout=10)
-                    data = json.loads(response.text)
-                    print(response.elapsed.total_seconds())
-
-                    num_cases = 0
-
-                    foundCases = []
-
                     for item in data['result']['inventory'].values():
-                        if item['market_name'] in caseNames:
-                            num_cases += item['amount']
-                            if item['market_name'] not in foundCases:
-                                foundCases.append(item['market_name'])
-
-                    if num_cases > 0:
-                        with open("results.txt", "a") as e:
-                            e.write("Tf2 items\n")
-                            for case in foundCases:
-                                e.write(f"{case}, ")
-                            e.write('\n')
-                            e.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}/inventory\n\n")
-                except TimeoutError:
-                    print("Timed out")
+                        if 'CSGO_Type_WeaponCase' in [tag['internal_name'] for tag in item['tags']]:
+                            if (item["market_name"] not in excludedCases):
+                                num_cases += item['amount']
                 except:
-                    print("Private inventory")
-
-                try:
-                    response = session.get(f"https://hexa.one/api/v1/user/inventory/{steamID}/{gameID2}/2", headers={"X-API-Key": API_KEY}, timeout=10)
-                    data = json.loads(response.text)
-                    print(response.elapsed.total_seconds())
-
-                    num_cases = 0
-                    try:
-                        for item in data['result']['inventory'].values():
-                            if 'CSGO_Type_WeaponCase' in [tag['internal_name'] for tag in item['tags']]:
-                                if (item["market_name"] not in excludedCases):
-                                    num_cases += item['amount']
-                    except:
-                        continue
-
-                    if num_cases > 0:
-                        with open("results.txt", "a") as e:
-                            e.write("CS2 items\n")
-                            e.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}\n\n")
-                except TimeoutError:
-                    print("Timed out")
                     continue
-                except:
-                    print("Private inventory")
 
+                if num_cases > 0:
+                    with open("results.txt", "a") as e:
+                        e.write("CS2 items\n")
+                        e.write(f"{num_cases} db: http://steamcommunity.com/profiles/{steamID}/inventory\n\n")
+            except TimeoutError:
+                print("Timed out")
+                continue
+            except:
+                print("Private inventory")
+
+            with open("database.txt", "r") as f:
                 f.write(steamID + '\n')
-            else:
-                print(f"{steamID} already in database")
+        else:
+            print(f"{steamID} already in database")
