@@ -155,7 +155,7 @@ for steamID in steamIDs:
             except:
                 print("Private inventory")
 
-            with open("database.txt", "r") as f:
+            with open("database.txt", "a") as f:
                 f.write(steamID + '\n')
         else:
             print(f"{steamID} already in database")
