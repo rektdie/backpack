@@ -1,28 +1,6 @@
-ot logged in  (No account specified)
+unt : not logged in  (No account specified)
+map     : koth_harvest_final at: 0 x, 0 y, 0 z
 tags    : cp,hidden,increased_maxplayers,valve
-players : 23 humans, 0 bots (32 max)
-edicts  : 505 used of 2048 max
+players : 24 humans, 0 bots (32 max)
 # userid name                uniqueid            connected ping loss state
-#    959 "СОЦИОПАТ ВАСИЛИЙ" [U:1:843010522] 09:49   91    0 active
-#    924 "☨V a n d e t t a ☨" [U:1:1343312445] 20:22     61    0 active
-#    955 "Блядь я в армии" [U:1:852887358] 11:01   85    0 active
-#    978 "Kaendas"           [U:1:36027746]      00:05       58   75 spawning
-#    960 "Man0Player"        [U:1:476012103]     09:49      123    0 active
-#    974 "SantiXM"           [U:1:872217146]     01:23       90    0 active
-#    971 "Доктор Менгеле" [U:1:1512556398] 05:05  108    0 active
-#    953 "adolf"             [U:1:210067102]     12:53       73    0 active
-#    963 "lshhelyova"        [U:1:1602570495]    07:54      108    0 active
-#    956 "mimi moomi"        [U:1:1067821870]    11:01       95    0 active
-#    964 "Mistgun"           [U:1:1569801648]    06:58       62    0 active
-#    975 "Pimasz"            [U:1:362985335]     01:22       60    0 active
-#    909 "Moangrill"         [U:1:1583356045]    29:38       72    0 active
-#    965 "idfk"              [U:1:1053221188]    06:57       92    0 active
-#    966 "carrot"            [U:1:909062245]     06:26       60    0 active
-#    972 "ocasds"            [U:1:1021257213]    05:04       65    0 active
-#    979 "detonator_420"     [U:1:404083185]     00:03       86   76 spawning
-#    957 "Fiddlepeep"        [U:1:1108193096]    11:00       72    0 active
-#    915 "Snickers"          [U:1:297769869]     28:04       69    0 active
-#    917 "Thien"             [U:1:1127254458]    28:01       76    0 active
-#    977 "Lāčplēsis"      [U:1:81114407]      01:20       85    0 active
-#    919 "mhilmi.orhann"     [U:1:1083105135]    26:11       87    0 active
-#    973 "анальный яйцерез" [U:1:1657787755] 05:04   84    0 active
+#   1859 "Minci Papa"        [U:1:222149835]     00:34       89   76 spawning
